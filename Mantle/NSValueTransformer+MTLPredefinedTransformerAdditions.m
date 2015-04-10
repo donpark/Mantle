@@ -228,15 +228,15 @@ NSString * const MTLBooleanValueTransformerName = @"MTLBooleanValueTransformerNa
 	}
 }
 
-+ (NSValueTransformer<MTLTransformerErrorHandling> *)mtl_validatingTransformerForClass:(Class)class {
-	NSParameterAssert(class != nil);
++ (NSValueTransformer<MTLTransformerErrorHandling> *)mtl_validatingTransformerForClass:(Class)clazz {
+	NSParameterAssert(clazz != nil);
 
 	return [MTLValueTransformer transformerUsingForwardBlock:^ id (id value, BOOL *success, NSError **error) {
-		if (value != nil && ![value isKindOfClass:class]) {
+		if (value != nil && ![value isKindOfClass:clazz]) {
 			if (error != NULL) {
 				NSDictionary *userInfo = @{
 										   NSLocalizedDescriptionKey: NSLocalizedString(@"Value did not match expected type", @""),
-										   NSLocalizedFailureReasonErrorKey: [NSString stringWithFormat:NSLocalizedString(@"Expected %1$@ to be of class %2$@", @""), value, class],
+										   NSLocalizedFailureReasonErrorKey: [NSString stringWithFormat:NSLocalizedString(@"Expected %1$@ to be of class %2$@", @""), value, clazz],
 										   MTLTransformerErrorHandlingInputValueErrorKey : value
 										   };
 

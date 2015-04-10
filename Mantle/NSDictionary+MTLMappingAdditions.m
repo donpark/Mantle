@@ -12,10 +12,10 @@
 
 @implementation NSDictionary (MTLMappingAdditions)
 
-+ (NSDictionary *)mtl_identityPropertyMapWithModel:(Class)class {
-	NSCParameterAssert([class isSubclassOfClass:MTLModel.class]);
++ (NSDictionary *)mtl_identityPropertyMapWithModel:(Class)clazz {
+	NSCParameterAssert([clazz isSubclassOfClass:MTLModel.class]);
 
-	NSArray *propertyKeys = [class propertyKeys].allObjects;
+	NSArray *propertyKeys = [clazz propertyKeys].allObjects;
 
 	return [NSDictionary dictionaryWithObjects:propertyKeys forKeys:propertyKeys];
 }
